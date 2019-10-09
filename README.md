@@ -1,2 +1,2 @@
 # DS4A
-Repository for MinTic Course and CorrelationOne
+Repository for MinTic and CorrelationOne Course
