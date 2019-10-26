@@ -145,9 +145,12 @@ class dataset:
 
     #Try to infer which columns require to be converted to datetime
     def inferredDatetimeColumnsForConversion(self):
-        inferredColumns=[x for x in self.getColumnsNames() if 'date' in x.lower()]
-        for i in inferredColumns:
-            self.dataFrame[i]=pd.to_datetime(self.dataFrame[i])
+        if self.__isLoaded:
+            inferredColumns=[x for x in self.getColumnsNames() if 'date' in x.lower()]
+            for i in inferredColumns:
+                self.dataFrame[i]=pd.to_datetime(self.dataFrame[i])
+        else:
+            print("There is no dataFrame loaded")
 
     def isNull(self):
         if self.__isLoaded:
@@ -157,23 +160,11 @@ class dataset:
 
 ''' -----------End class Definition ------------'''
 
+#%%
+
 listOfDataSets={}
 for key,value in listOfDataFrames.items():
     listOfDataSets[key]=dataset(key,value[0],value[1])
-
-
-#%%
-
-# for key,value in listOfDataSets.items():
-#     print()
-#     print("Dataset " + key +" with " + str(value.getRowsCount()) + " rows")
-#     print()
-#     print("-----Data Types-------")
-#     print(value.dataFrame.dtypes)
-#     print()
-
-# test=listOfDataSets['demographics']
-# print(type(test.dataFrame.describe()))
 
 #%% [markdown]
 #For that, we first analyze the data types of datasets in order to see if there is necessary any kind of conversion and above all if the data is homogenous or if it is needed a custom transformation
@@ -192,24 +183,24 @@ for key,value in listOfDataSets.items():
 #%% [markdown]
 #From above, we found that most of data types are well inferred by Pandas, but for feature work it is necessary to make some data type conversions for fields that are datetime
 #So we procced on that.
-for d in listOfDataSets.values():
-    d.inferredDatetimeColumnsForConversion()
+for key,value in listOfDataSets.items():
+    value.inferredDatetimeColumnsForConversion()
     print()
     print("Dataset " + key)
     print()
     print("-----Data Types-------")
-    print(d.getColumnsDataTypes())
+    print(value.getColumnsDataTypes())
     print()
 
 #%% [markdown]
 #Now it's time to see if there is any null values we must deal with them
 
 #%%
-for d in listOfDataSets.values():
+for key,value in listOfDataSets.items():
     print()
-    print("Dataset " + key)
+    print("Dataset " + key +" with " + str(value.getRowsCount()) + " rows")
     print()
-    d.isNull()
+    print(value.isNull())
     print()
 
 #%%
