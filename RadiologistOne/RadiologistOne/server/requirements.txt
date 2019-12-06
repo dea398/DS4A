@@ -1,1 +1,6 @@
 flask==1.0.3
+bqplot
+ipympl
+ipyvolume
+scipy
+voila

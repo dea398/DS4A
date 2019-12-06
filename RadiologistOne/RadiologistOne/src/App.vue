@@ -1,9 +1,11 @@
 ﻿<template>
-  <div>
+  <v-app>
     <TheNavBar />
-    <router-view></router-view>
+    <v-content transition="slide-x-transition">
+      <router-view></router-view>
+    </v-content>
     <TheFooter />
-  </div>
+  </v-app>
 </template>
 
 <script>
