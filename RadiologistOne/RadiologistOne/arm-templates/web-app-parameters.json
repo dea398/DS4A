@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "name": {
+      "value": "RadiologistOne"
+    },
+    "appServicePlanName": {
+      "value": "RadiologistOne-20191204200448"
+    },
+    "sku": {
+      "value": "B1"
+    },
+    "linuxFxVersion": {
+      "value": "python|3.7"
+    },
+    "subscriptionId": {
+      "value": "49075c73-0acc-47ed-b4c5-02cb658190a3"
+    },
+    "location": {
+      "value": "Central US"
+    }
+  }
+}
