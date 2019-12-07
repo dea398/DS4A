@@ -7,29 +7,35 @@
       :perspective="0"
       :inverse-scaling="1500"
       :space="800"
-      :width="650"
-      :height="400"
+      :width="550"
+      :height="500"
     >
       <slide :index="0">
-        <template>
-          <div>
-            <dwvVue style="width: 100%; height:500px;" />
+        <figure id="dwv0" style="width: 100%;">
+          <div class="layerContainer">
+            <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-        </template>
+          <!--<input type="range" id="sliceRange" value="0" /> -->
+          <figcaption>Patient 1</figcaption>
+        </figure>
       </slide>
       <slide :index="1">
-        <template>
-          <div>
-            <dwvVue style="width: 100%; height:600px;" />
+        <figure id="dwv1">
+          <div class="layerContainer">
+            <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-        </template>
+          <!--<input type="range" id="sliceRange" value="0" /> -->
+          <figcaption>Patient 2</figcaption>
+        </figure>
       </slide>
       <slide :index="2">
-        <template>
-          <div>
-            <dwvVue style="width: 100%; height:700px;" />
+        <figure id="dwv2" style="width: 100%;">
+          <div class="layerContainer">
+            <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-        </template>
+          <!--<input type="range" id="sliceRange" value="0" /> -->
+          <figcaption>Patient 3</figcaption>
+        </figure>
       </slide>
 
       <!--
@@ -44,7 +50,7 @@
       </slide>
       !-->
     </carousel-3d>
-    <div id="output">
+    <div id="output" style="display:none">
       <!--
       <v-btn id="btnNext" @click="nextSlide" color="success">Next</v-btn>
       <v-btn id="btnPrev" @click="prevSlide" color="success">Previous</v-btn>!-->
@@ -57,6 +63,7 @@
 
 <script type="text/javascript">
 import dwvVue from "@/components/dwv.vue";
+import dwv from "dwv";
 
 export default {
   name: "Demo",
@@ -97,6 +104,57 @@ export default {
     var output = document.getElementById("output");
     const btnNext = document.querySelector('[data-id="btnNext"]');
 
+    // base function to get elements
+    dwv.gui.getElement = dwv.gui.base.getElement;
+    dwv.gui.displayProgress = function(percent) {};
+
+    // create the first dwv app
+    var app0 = new dwv.App();
+    app0.init({
+      containerDivId: "dwv0",
+      fitToWindow: "true",
+      tools: ["Scroll"]
+    });
+    var i;
+    var list0 = [];
+    for (i = 0; i < 4; i++) {
+      list0[i] = "Patient1/T1_TSE_TRA/T1_TSE_TRA__0001_00" + (i + 1) + ".dcm";
+    }
+    app0.loadURLs(list0);
+
+    // create the second dwv app
+    var app1 = new dwv.App();
+    // initialise with the id of the container div
+    app1.init({
+      containerDivId: "dwv1",
+      fitToWindow: "true",
+      tools: ["Scroll"]
+    });
+
+    var j;
+    var list1 = [];
+    for (j = 0; j < 5; j++) {
+      list1[j] = "Patient2/T1_TSE_TRA/T1_TSE_TRA__0002_00" + (j + 1) + ".dcm";
+    }
+    // load dicom data
+    app1.loadURLs(list1);
+
+    // create the third dwv app
+    var app2 = new dwv.App();
+    app2.init({
+      containerDivId: "dwv2",
+      fitToWindow: "true",
+      tools: ["Scroll"]
+    });
+
+    var k;
+    var list2 = [];
+    for (k = 0; k < 5; k++) {
+      list2[k] = "Patient3/T1_TSE_TRA/T1_TSE_TRA__0003_00" + (k + 1) + ".dcm";
+    }
+
+    app2.loadURLs(list2);
+
     Leap.loop(function(frame) {
       output.innerHTML =
         "<div style='width:300px; float:left; padding:5px'>" +
@@ -104,7 +162,7 @@ export default {
         frame.id +
         "</div>";
 
-      if (frame.gestures.length > 0 && frame.id % 20 === 0) {
+      if (frame.gestures.length > 0 && frame.id % 15 === 0) {
         btnNext.click();
       }
     });
@@ -115,11 +173,11 @@ export default {
 <style scoped>
 .mainDiv {
   background-color: black;
-  padding-top: 5%;
-  padding-bottom: 10%;
+  padding-top: 3%;
+  padding-bottom: 12%;
 }
 .carousel-3d-container {
-  padding-top: 1%;
+  padding-top: 0%;
 }
 .carousel-3d-slide {
   padding: 0px;
