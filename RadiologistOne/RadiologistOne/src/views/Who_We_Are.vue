@@ -15,7 +15,7 @@
           <GridComponent
             v-for="textAsset in gridTextAssets"
             :key="textAsset.id"
-            :header="textAsset.title"
+            :header="textAsset.name"
             :description="textAsset.shortDescription"
           />
         </div>
@@ -47,7 +47,7 @@ export default {
       gridTextAssets: [
         {
           shortDescription: "",
-          title: "",
+          name: "",
           id: 0
         }
       ],

@@ -1,7 +1,7 @@
-#%% [markdown]
+# %% [markdown]
 # # Final Project
 
-#%%
+# %%
 # Loading libraries
 from IPython import get_ipython
 import pydicom
@@ -15,7 +15,7 @@ PathDicom = "./DataP/"
 lstFilesDCM = []  # create an empty list
 for dirName, subdirList, fileList in os.walk(PathDicom):
     for filename in fileList:
-        if ".ima" in filename.lower():  # check whether the file is DICOM
+        if ".dcm" in filename.lower():  # check whether the file is DICOM
             lstFilesDCM.append(os.path.join(dirName, filename))
 
 
@@ -54,5 +54,41 @@ plt.set_cmap(plt.gray())
 plt.pcolormesh(x, y, numpy.flipud(SpineImgArray[:, :, 12]))
 
 
+# %%
+def sitk_show(img, title=None, margin=0.05, dpi=40):
+    nda = SimpleITK.GetArrayFromImage(img)
+    spacing = img.GetSpacing()
+    figsize = (1 + margin) * nda.shape[0] / \
+        dpi, (1 + margin) * nda.shape[1] / dpi
+    extent = (0, nda.shape[1]*spacing[1], nda.shape[0]*spacing[0], 0)
+    fig = plt.figure(figsize=figsize, dpi=dpi)
+    ax = fig.add_axes([margin, margin, 1 - 2*margin, 1 - 2*margin])
+
+    plt.set_cmap("gray")
+    ax.imshow(nda, extent=extent, interpolation=None)
+
+    if title:
+        plt.title(title)
+
+    plt.show()
 
 # %%
+
+
+reader = SimpleITK.ImageSeriesReader()
+filenamesDICOM = reader.GetGDCMSeriesFileNames(PathDicom)
+reader.SetFileNames(filenamesDICOM)
+img3DOriginal = reader.Execute()
+
+imgOriginal = img3DOriginal[:, :, 8]
+
+sitk_show(imgOriginal)
+
+
+# %%
+imgSmooth = SimpleITK.CurvatureFlow(image1=imgOriginal,
+                                    timeStep=0.125,
+                                    numberOfIterations=5)
+
+
+sitk_show(imgSmooth)

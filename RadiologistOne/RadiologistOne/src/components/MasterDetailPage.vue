@@ -2,27 +2,31 @@
   <div class="col">
     <div class="row heading">
       <div class="col">
-        <h3 class="ml-3 mb-4">{{textSampleData.title}}</h3>
+        <h3 class="ml-3 mb-4">{{textSampleData.name}}</h3>
       </div>
     </div>
     <div class="row">
       <div class="col-12 mt-3">
         <b-breadcrumb class="bg-white">
           <b-breadcrumb-item href="#">Master Detail</b-breadcrumb-item>
-          <b-breadcrumb-item active>{{textSampleData.title}}</b-breadcrumb-item>
+          <b-breadcrumb-item active>{{textSampleData.name}}</b-breadcrumb-item>
         </b-breadcrumb>
       </div>
       <div class="col-md-8 col-12 ml-3 mb-5">
-        <p class="title">Patient Id</p>
-        <p>{{textSampleData.status}}</p>
+        <p class="title">Patient</p>
+        <p>{{textSampleData.name}}</p>
         <p class="title">Order Date</p>
         <p>{{textSampleData.orderDate}}</p>
         <p class="title">Healthcare Provider</p>
-        <p>{{textSampleData.shipTo}}</p>
+        <p>{{textSampleData.shipFrom}}</p>
         <p class="title">Age</p>
-        <p>{{textSampleData.orderTotal}}</p>
-        <p class="title">Diagnostic</p>
-        <p>{{textSampleData.longDescription}}</p>
+        <p>{{textSampleData.age}}</p>
+        <p class="title">Description</p>
+        <p>{{textSampleData.shortDescription}}</p>
+        <p class="title">Classification</p>
+        <p>{{textSampleData.status}}</p>
+        <p class="title">Probability</p>
+        <p>{{textSampleData.probability}}</p>
       </div>
     </div>
   </div>
@@ -39,11 +43,13 @@ export default {
         return (
           value.id !== undefined &&
           value.longDescription !== undefined &&
+          value.shortDescription !== undefined &&
           value.orderDate !== undefined &&
-          value.orderTotal !== undefined &&
-          value.shipTo !== undefined &&
+          value.age !== undefined &&
+          value.shipFrom !== undefined &&
           value.status !== undefined &&
-          value.title !== undefined
+          value.probability !== undefined &&
+          value.name !== undefined
         );
       }
     }

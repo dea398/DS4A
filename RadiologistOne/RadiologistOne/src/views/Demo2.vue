@@ -8,7 +8,7 @@
               v-for="(textAssets, index) in masterDetailText"
               :key="textAssets.id"
               :index="index"
-              :tabText="textAssets.title"
+              :tabText="textAssets.name"
               @onDisplayTabClick="handleDisplayTabClick"
             />
           </div>
@@ -45,11 +45,13 @@ export default {
         {
           id: 0,
           longDescription: "",
+          shortDescription: "",
           orderDate: "",
-          orderTotal: 0,
-          shipTo: "",
+          age: 0,
+          shipFrom: "",
           status: "",
-          title: ""
+          probability: 0,
+          name: ""
         }
       ],
       currentDisplayTabIndex: 0,
