@@ -6,7 +6,8 @@
     ></md-progress-bar>
     <div class="button-row">
       <!-- action buttons -->
-      <md-menu md-size="medium" md-align-trigger>
+      <!-- 
+      <md-menu md-size="auto" md-align-trigger>
         <md-button
           class="md-raised md-primary"
           md-menu-trigger
@@ -37,7 +38,9 @@
           >Tags</md-button
         >
       </md-menu>
+      -->
       <!-- dicom tags dialog-->
+
       <md-dialog :md-active.sync="showDicomTags">
         <tagsTable :tagsData="tags" />
       </md-dialog>

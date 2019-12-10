@@ -62,14 +62,10 @@
 </template>
 
 <script type="text/javascript">
-import dwvVue from "@/components/dwv.vue";
 import dwv from "dwv";
 
 export default {
   name: "Demo",
-  components: {
-    dwvVue
-  },
   data() {
     return {
       slides: [
@@ -106,7 +102,9 @@ export default {
 
     // base function to get elements
     dwv.gui.getElement = dwv.gui.base.getElement;
-    dwv.gui.displayProgress = function(percent) {};
+    dwv.gui.displayProgress = function() {};
+    // refresh element
+    dwv.gui.refreshElement = dwv.gui.base.refreshElement;
 
     // create the first dwv app
     var app0 = new dwv.App();

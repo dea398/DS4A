@@ -4,8 +4,13 @@
     type="button"
     @click="$emit('onDisplayTabClick', index)"
   >
-    <img class="mr-3" src="@/assets/GreyAvatar.svg" alt="Default Grey Avatar" />
-    {{tabText}}
+    <img
+      class="mr-3"
+      style="width:30px; height:30px"
+      src="patient.png"
+      alt="Default Grey Avatar"
+    />
+    {{ tabText }}
   </button>
 </template>
 

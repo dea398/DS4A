@@ -3,7 +3,7 @@
     <iframe
       frameborder="0"
       style="width: 100%; height:450px; border:0"
-      v-bind:src="'http://www.bing.com'"
+      v-bind:src="'https://www.bing.com'"
     ></iframe>
     <!--<v-btn color="success">Success</v-btn>-->
   </div>

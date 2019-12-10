@@ -1,14 +1,15 @@
+# import requests
 from flask import Flask, jsonify, make_response, send_from_directory
 import os
 from os.path import exists, join
-#from flask_cors import CORS
+# from flask_cors import CORS
 
 from constants import CONSTANTS
 from sample_data import sample_data, patient_data
 
 
 app = Flask(__name__, static_folder='build')
-#cors = CORS(app)
+# cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # MasterDetail Page Endpoint
 @app.route(CONSTANTS['ENDPOINT']['MASTER_DETAIL'])
@@ -33,6 +34,8 @@ def get_grid():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
+    # if app.debug:
+    #     return requests.get('http://localhost:3000/{}'.format(path)).text
     file_to_serve = path if path and exists(
         join(app.static_folder, path)) else 'index.html'
     return send_from_directory(app.static_folder, file_to_serve)
