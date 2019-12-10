@@ -16,7 +16,7 @@ patient_data['text_assets'] = [
         'status': 'Healthy',
         'shipFrom': 'Francisco Pérez-Olaeta',
         'age': 24.0,
-        'probability': 0.7,
+        'probability': 0.5,
         'orderDate': datetime.datetime.now(),
         'id': 1
     },
@@ -27,7 +27,7 @@ patient_data['text_assets'] = [
         'status': 'Herniation',
         'shipFrom': 'Soo Jung Lee',
         'age': 60.0,
-        'probability': 0.7,
+        'probability': 0.8,
         'orderDate': datetime.datetime.now(),
         'id': 2
     },
@@ -49,7 +49,7 @@ patient_data['text_assets'] = [
         'status': "Herniation",
         'shipFrom': "Soo Jung Lee",
         'age': 56.0,
-        'probability': 0.7,
+        'probability': 0.1,
         'orderDate': datetime.datetime.now(),
         'id': 4
     },
@@ -60,7 +60,7 @@ patient_data['text_assets'] = [
         'status': "Healthy",
         'shipFrom': "John Rodman",
         'age': 81.0,
-        'probability': 0.7,
+        'probability': 0.2,
         'orderDate': datetime.datetime.now(),
         'id': 5
     },
@@ -71,7 +71,7 @@ patient_data['text_assets'] = [
         'status': "Herniation",
         'shipFrom': "Elizabeth Andersen",
         'age': 56.0,
-        'probability': 0.7,
+        'probability': 0.4,
         'orderDate': datetime.datetime.now(),
         'id': 6
     },
@@ -82,7 +82,7 @@ patient_data['text_assets'] = [
         'status': "Herniation",
         'shipFrom': "Peter Krschne",
         'age': 27.0,
-        'probability': 0.7,
+        'probability': 0.9,
         'orderDate': datetime.datetime.now(),
         'id': 7
     },
@@ -93,7 +93,7 @@ patient_data['text_assets'] = [
         'status': "Healthy",
         'shipFrom': "Sven Mortensen",
         'age': 73.0,
-        'probability': 0.7,
+        'probability': 0.8,
         'orderDate': datetime.datetime.now(),
         'id': 8
     },

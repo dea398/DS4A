@@ -3,17 +3,34 @@
     <main id="mainContent" class="container-fluid">
       <div class="row">
         <div class="col-2 p-0 border-right sidebar">
+          <v-btn
+            id="btnRank"
+            class="ma-2"
+            @click="loader = 'loading2'"
+            color="info"
+            :loading="loading2"
+            :disabled="loading2"
+            >Rank Patients
+            <template v-slot:loader>
+              <span>Ranking...</span>
+            </template>
+          </v-btn>
           <div class="list-group list-group-flush border-bottom">
-            <MasterDetailSideBarTab
-              v-for="(textAssets, index) in masterDetailText"
-              :key="textAssets.id"
-              :index="index"
-              :tabText="textAssets.name"
-              @onDisplayTabClick="handleDisplayTabClick"
-            />
+            <transition-group name="items" tag="div">
+              <MasterDetailSideBarTab
+                v-for="(textAssets, index) in masterDetailText"
+                :key="textAssets.id"
+                :index="index"
+                :tabText="textAssets.name"
+                @onDisplayTabClick="handleDisplayTabClick"
+              />
+            </transition-group>
           </div>
         </div>
-        <MasterDetailPage :textSampleData="masterDetailText[currentDisplayTabIndex]" />
+        <MasterDetailPage
+          style="height: 700px;"
+          :textSampleData="masterDetailText[currentDisplayTabIndex]"
+        />
       </div>
     </main>
     <BaseWarningMessage
@@ -41,6 +58,8 @@ export default {
 
   data() {
     return {
+      loader: null,
+      loading2: false,
       masterDetailText: [
         {
           id: 0,
@@ -62,6 +81,21 @@ export default {
 
   created() {
     this.fetchTextAssets();
+  },
+  watch: {
+    loader() {
+      const l = this.loader;
+      this[l] = !this[l];
+
+      setTimeout(() => (this[l] = false), 3000);
+      //this.masterDetailText = this._.shuffle(this.masterDetailText);
+      this.masterDetailText = this._.orderBy(
+        this.masterDetailText,
+        "probability",
+        "desc"
+      );
+      this.loader = null;
+    }
   },
 
   methods: {
@@ -93,8 +127,16 @@ export default {
 </script>
 
 <style scoped>
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+
 .sidebar {
   /* full height - footer height - navbar height */
   min-height: calc(100vh - 160px - 57px);
+}
+#app .items-move {
+  transition: transform 3s;
 }
 </style>

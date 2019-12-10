@@ -9,6 +9,7 @@ import vuetify from "./plugins/vuetify";
 import VueResource from "vue-resource";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
+import VueLodash from "vue-lodash";
 
 import "@babel/polyfill";
 
@@ -16,6 +17,7 @@ Vue.use(BootstrapVue);
 Vue.use(Carousel3d);
 Vue.use(vuetify);
 Vue.use(VueResource);
+Vue.use(VueLodash);
 
 Vue.config.productionTip = false;
 Vue.http.options.crossOrigin = true;
