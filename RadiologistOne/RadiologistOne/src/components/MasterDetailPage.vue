@@ -11,8 +11,8 @@
               :perspective="0"
               :inverse-scaling="1500"
               :space="700"
-              :width="200"
-              :height="200"
+              :width="400"
+              :height="400"
             >
               <slide :index="0">
                 <figure id="dwv0" style="width: 100%;">
@@ -45,29 +45,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 mt-3">
-        <b-breadcrumb class="bg-white">
-          <b-breadcrumb-item href="#">Master Detail</b-breadcrumb-item>
-          <b-breadcrumb-item active>{{
-            textSampleData.name
-          }}</b-breadcrumb-item>
-        </b-breadcrumb>
-      </div>
       <div class="col-md-8 col-12 ml-3 mb-5">
         <p class="title">Patient</p>
         <p>{{ textSampleData.name }}</p>
         <p class="title">Order Date</p>
         <p>{{ textSampleData.orderDate }}</p>
-        <p class="title">Healthcare Provider</p>
-        <p>{{ textSampleData.shipFrom }}</p>
-        <p class="title">Age</p>
-        <p>{{ textSampleData.age }}</p>
         <p class="title">Description</p>
         <p>{{ textSampleData.shortDescription }}</p>
-        <p class="title">Classification</p>
-        <p>{{ textSampleData.status }}</p>
-        <p class="title">Probability</p>
-        <p>{{ textSampleData.probability }}</p>
       </div>
     </div>
   </div>
@@ -109,10 +93,11 @@ export default {
       fitToWindow: "true",
       tools: ["Scroll"]
     });
-    var i;
+
     var list0 = [];
-    for (i = 0; i < 4; i++) {
-      list0[i] = "Patient1/T1_TSE_TRA/T1_TSE_TRA__0001_00" + (i + 1) + ".dcm";
+    for (var i = 0; i < 4; i++) {
+      list0[i] =
+        "Patient1/T1_TSE_TRA/D3/T1_TSE_TRA__0005_00" + (i + 1) + ".dcm";
     }
     app0.loadURLs(list0);
 
@@ -125,10 +110,15 @@ export default {
       tools: ["Scroll"]
     });
 
-    var j;
     var list1 = [];
-    for (j = 0; j < 5; j++) {
-      list1[j] = "Patient2/T1_TSE_TRA/T1_TSE_TRA__0002_00" + (j + 1) + ".dcm";
+    for (i = 0; i < 4; i++) {
+      if (i + 6 == 10) {
+        list1[i] =
+          "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_0" + (i + 6) + ".dcm";
+      } else {
+        list1[i] =
+          "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_00" + (i + 6) + ".dcm";
+      }
     }
     // load dicom data
     app1.loadURLs(list1);
@@ -141,10 +131,10 @@ export default {
       tools: ["Scroll"]
     });
 
-    var k;
     var list2 = [];
-    for (k = 0; k < 5; k++) {
-      list2[k] = "Patient3/T1_TSE_TRA/T1_TSE_TRA__0003_00" + (k + 1) + ".dcm";
+    for (i = 0; i < 4; i++) {
+      list2[i] =
+        "Patient1/T1_TSE_TRA/D5/T1_TSE_TRA__0005_0" + (i + 11) + ".dcm";
     }
 
     app2.loadURLs(list2);
@@ -164,10 +154,8 @@ export default {
 
 .heading {
   background-color: black;
-  padding-top: 2em;
+  height: 500px;
+  padding-top: 3em;
   padding-bottom: 0em;
-}
-.imageLayer {
-  width: 15rem;
 }
 </style>

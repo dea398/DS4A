@@ -10,7 +10,8 @@
             color="info"
             :loading="loading2"
             :disabled="loading2"
-            >Rank Patients
+          >
+            Rank Patients
             <template v-slot:loader>
               <span>Ranking...</span>
             </template>
@@ -21,14 +22,14 @@
                 v-for="(textAssets, index) in masterDetailText"
                 :key="textAssets.id"
                 :index="index"
-                :tabText="textAssets.name"
+                :tabText="masterDetailText[currentDisplayTabIndex]"
                 @onDisplayTabClick="handleDisplayTabClick"
               />
             </transition-group>
           </div>
         </div>
         <MasterDetailPage
-          style="height: 700px;"
+          style="height: 600px;"
           :textSampleData="masterDetailText[currentDisplayTabIndex]"
         />
       </div>
@@ -86,6 +87,12 @@ export default {
     loader() {
       const l = this.loader;
       this[l] = !this[l];
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
 
       setTimeout(() => (this[l] = false), 3000);
       //this.masterDetailText = this._.shuffle(this.masterDetailText);
@@ -137,6 +144,6 @@ export default {
   min-height: calc(100vh - 160px - 57px);
 }
 #app .items-move {
-  transition: transform 3s;
+  transition: transform 4s;
 }
 </style>

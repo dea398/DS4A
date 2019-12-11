@@ -8,20 +8,22 @@
           @click="$emit('onDisplayTabClick', index)"
         >
           <v-avatar>
-            <img
-              class="mr-3"
-              style="width:30px; height:30px"
-              src="patient.png"
-            />
+            <img class="mr-3" style="width:30px; height:30px" src="patient.png" />
           </v-avatar>
-          {{ tabText }}
+          {{ tabText.name }}
         </button>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        <p class="title">Healthcare Provider</p>
+        <p>{{ tabText.shipFrom }}</p>
+        <p class="title">Age</p>
+        <p>{{ tabText.age }}</p>
+        <p class="title">Classification</p>
+        <p>{{ tabText.status }}</p>
+        <p class="title">Probability</p>
+        <div id="myDIV" style="display: none;">
+          <p>{{ tabText.probability }}</p>
+        </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -32,8 +34,21 @@ export default {
   name: "MasterDetailSideBarTab",
   props: {
     tabText: {
-      type: String,
-      required: true
+      type: Object,
+      required: true,
+      validator: function(value) {
+        return (
+          value.id !== undefined &&
+          value.longDescription !== undefined &&
+          value.shortDescription !== undefined &&
+          value.orderDate !== undefined &&
+          value.age !== undefined &&
+          value.shipFrom !== undefined &&
+          value.status !== undefined &&
+          value.probability !== undefined &&
+          value.name !== undefined
+        );
+      }
     },
     index: {
       type: Number,
