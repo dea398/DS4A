@@ -40,6 +40,9 @@
               </slide>
             </carousel-3d>
           </div>
+          <span data-id="btnNext" @click="nextSlide()" style="display:none">
+            <i class="fa fa-refresh"></i>
+          </span>
           <h3 class="ml-3 mb-4">{{ textSampleData.name }}</h3>
         </div>
       </div>
@@ -138,6 +141,23 @@ export default {
     }
 
     app2.loadURLs(list2);
+
+    var Leap = require("leapjs");
+    const btnNext = document.querySelector('[data-id="btnNext"]');
+
+    Leap.loop(function(frame) {
+      if (frame.gestures.length > 0 && frame.id % 15 === 0) {
+        btnNext.click();
+      }
+    });
+  },
+  methods: {
+    nextSlide() {
+      this.$refs.mycarousel.goNext();
+    },
+    prevSlide() {
+      this.$refs.mycarousel.goPrev();
+    }
   }
 };
 </script>

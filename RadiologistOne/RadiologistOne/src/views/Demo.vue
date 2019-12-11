@@ -72,9 +72,9 @@
       <!--
       <v-btn id="btnNext" @click="nextSlide" color="success">Next</v-btn>
       <v-btn id="btnPrev" @click="prevSlide" color="success">Previous</v-btn>!-->
-      <span data-id="btnNext" @click="nextSlide()"
-        ><i class="fa fa-refresh"></i
-      ></span>
+      <span data-id="btnNext" @click="nextSlide()">
+        <i class="fa fa-refresh"></i>
+      </span>
     </div>
   </div>
 </template>
@@ -132,9 +132,10 @@ export default {
       tools: ["Scroll"]
     });
     var list0 = [];
-    for (var i = 0; i < 4; i++) {      
-      list0[i] = "Patient1/T1_TSE_TRA/D3/T1_TSE_TRA__0005_00" + (i+1) + ".dcm";
-    }      
+    for (var i = 0; i < 4; i++) {
+      list0[i] =
+        "Patient1/T1_TSE_TRA/D3/T1_TSE_TRA__0005_00" + (i + 1) + ".dcm";
+    }
     app0.loadURLs(list0);
 
     // create the second dwv app
@@ -146,12 +147,14 @@ export default {
       tools: ["Scroll"]
     });
     var list1 = [];
-    for (var i = 0; i < 4; i++) {      
-      if(i+6==10) {
-        list1[i] = "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_0" + (i+6) + ".dcm"; 
+    for (i = 0; i < 4; i++) {
+      if (i + 6 == 10) {
+        list1[i] =
+          "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_0" + (i + 6) + ".dcm";
       } else {
-        list1[i] = "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_00" + (i+6) + ".dcm"; 
-      }        
+        list1[i] =
+          "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_00" + (i + 6) + ".dcm";
+      }
     }
     app1.loadURLs(list1);
 
@@ -163,8 +166,9 @@ export default {
       tools: ["Scroll"]
     });
     var list2 = [];
-    for (var i = 0; i < 4; i++) {
-      list2[i] = "Patient1/T1_TSE_TRA/D5/T1_TSE_TRA__0005_0" + (i+11) + ".dcm";        
+    for (i = 0; i < 4; i++) {
+      list2[i] =
+        "Patient1/T1_TSE_TRA/D5/T1_TSE_TRA__0005_0" + (i + 11) + ".dcm";
     }
     app2.loadURLs(list2);
 
@@ -175,12 +179,12 @@ export default {
       tools: ["Scroll"]
     });
     var list3 = [];
-    for (var i = 0; i < 15; i++) {
-      if(i < 9) {
-        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_00" + (i+1) + ".dcm";
+    for (i = 0; i < 15; i++) {
+      if (i < 9) {
+        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_00" + (i + 1) + ".dcm";
       } else {
-        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_0" + (i+1) + ".dcm";
-      }            
+        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_0" + (i + 1) + ".dcm";
+      }
     }
     app3.loadURLs(list3);
 
@@ -191,12 +195,12 @@ export default {
       tools: ["Scroll"]
     });
     var list4 = [];
-    for (var i = 0; i < 15; i++) {
-      if(i < 9) {
-        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_00" + (i+1) + ".dcm";
+    for (i = 0; i < 15; i++) {
+      if (i < 9) {
+        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_00" + (i + 1) + ".dcm";
       } else {
-        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_0" + (i+1) + ".dcm";
-      }            
+        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_0" + (i + 1) + ".dcm";
+      }
     }
     app4.loadURLs(list4);
 

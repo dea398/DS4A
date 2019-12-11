@@ -88,13 +88,14 @@ export default {
       const l = this.loader;
       this[l] = !this[l];
       var x = document.getElementById("myDIV");
+
       if (x.style.display === "none") {
         x.style.display = "block";
       } else {
         x.style.display = "none";
       }
 
-      setTimeout(() => (this[l] = false), 3000);
+      setTimeout(() => (this[l] = false), 4000);
       //this.masterDetailText = this._.shuffle(this.masterDetailText);
       this.masterDetailText = this._.orderBy(
         this.masterDetailText,
@@ -104,7 +105,6 @@ export default {
       this.loader = null;
     }
   },
-
   methods: {
     fetchTextAssets() {
       fetch(CONSTANTS.ENDPOINT.MASTERDETAIL)

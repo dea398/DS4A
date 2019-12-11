@@ -18,10 +18,10 @@
         <p>{{ tabText.shipFrom }}</p>
         <p class="title">Age</p>
         <p>{{ tabText.age }}</p>
-        <p class="title">Classification</p>
-        <p>{{ tabText.status }}</p>
-        <p class="title">Probability</p>
-        <div id="myDIV" style="display: none;">
+        <div id="myDIV" style="display:none;">
+          <p class="title">Classification</p>
+          <p>{{ tabText.status }}</p>
+          <p class="title">Probability</p>
           <p>{{ tabText.probability }}</p>
         </div>
       </v-expansion-panel-content>
