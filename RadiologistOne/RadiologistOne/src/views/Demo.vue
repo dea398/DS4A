@@ -16,7 +16,7 @@
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
           <!--<input type="range" id="sliceRange" value="0" /> -->
-          <figcaption>Patient 1</figcaption>
+          <figcaption>T1 TSE D3</figcaption>
         </figure>
       </slide>
       <slide :index="1">
@@ -25,7 +25,7 @@
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
           <!--<input type="range" id="sliceRange" value="0" /> -->
-          <figcaption>Patient 2</figcaption>
+          <figcaption>T1 TSE D4</figcaption>
         </figure>
       </slide>
       <slide :index="2">
@@ -34,7 +34,25 @@
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
           <!--<input type="range" id="sliceRange" value="0" /> -->
-          <figcaption>Patient 3</figcaption>
+          <figcaption>T1 TSE D5</figcaption>
+        </figure>
+      </slide>
+      <slide :index="3">
+        <figure id="dwv3" style="width: 100%;">
+          <div class="layerContainer">
+            <canvas class="imageLayer" style="width: 100%;"></canvas>
+          </div>
+          <!--<input type="range" id="sliceRange" value="0" /> -->
+          <figcaption>T1 TSE SAG</figcaption>
+        </figure>
+      </slide>
+      <slide :index="4">
+        <figure id="dwv4" style="width: 100%;">
+          <div class="layerContainer">
+            <canvas class="imageLayer" style="width: 100%;"></canvas>
+          </div>
+          <!--<input type="range" id="sliceRange" value="0" /> -->
+          <figcaption>T2 TSE SAG</figcaption>
         </figure>
       </slide>
 
@@ -113,11 +131,10 @@ export default {
       fitToWindow: "true",
       tools: ["Scroll"]
     });
-    var i;
     var list0 = [];
-    for (i = 0; i < 4; i++) {
-      list0[i] = "Patient1/T1_TSE_TRA/T1_TSE_TRA__0001_00" + (i + 1) + ".dcm";
-    }
+    for (var i = 0; i < 4; i++) {      
+      list0[i] = "Patient1/T1_TSE_TRA/D3/T1_TSE_TRA__0005_00" + (i+1) + ".dcm";
+    }      
     app0.loadURLs(list0);
 
     // create the second dwv app
@@ -128,13 +145,14 @@ export default {
       fitToWindow: "true",
       tools: ["Scroll"]
     });
-
-    var j;
     var list1 = [];
-    for (j = 0; j < 5; j++) {
-      list1[j] = "Patient2/T1_TSE_TRA/T1_TSE_TRA__0002_00" + (j + 1) + ".dcm";
+    for (var i = 0; i < 4; i++) {      
+      if(i+6==10) {
+        list1[i] = "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_0" + (i+6) + ".dcm"; 
+      } else {
+        list1[i] = "Patient1/T1_TSE_TRA/D4/T1_TSE_TRA__0005_00" + (i+6) + ".dcm"; 
+      }        
     }
-    // load dicom data
     app1.loadURLs(list1);
 
     // create the third dwv app
@@ -144,14 +162,43 @@ export default {
       fitToWindow: "true",
       tools: ["Scroll"]
     });
-
-    var k;
     var list2 = [];
-    for (k = 0; k < 5; k++) {
-      list2[k] = "Patient3/T1_TSE_TRA/T1_TSE_TRA__0003_00" + (k + 1) + ".dcm";
+    for (var i = 0; i < 4; i++) {
+      list2[i] = "Patient1/T1_TSE_TRA/D5/T1_TSE_TRA__0005_0" + (i+11) + ".dcm";        
     }
-
     app2.loadURLs(list2);
+
+    var app3 = new dwv.App();
+    app3.init({
+      containerDivId: "dwv3",
+      fitToWindow: "true",
+      tools: ["Scroll"]
+    });
+    var list3 = [];
+    for (var i = 0; i < 15; i++) {
+      if(i < 9) {
+        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_00" + (i+1) + ".dcm";
+      } else {
+        list3[i] = "Patient1/T1_TSE_SAG/T1_TSE_SAG__0005_0" + (i+1) + ".dcm";
+      }            
+    }
+    app3.loadURLs(list3);
+
+    var app4 = new dwv.App();
+    app4.init({
+      containerDivId: "dwv4",
+      fitToWindow: "true",
+      tools: ["Scroll"]
+    });
+    var list4 = [];
+    for (var i = 0; i < 15; i++) {
+      if(i < 9) {
+        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_00" + (i+1) + ".dcm";
+      } else {
+        list4[i] = "Patient1/T2_TSE_SAG/T2_TSE_SAG__0001_0" + (i+1) + ".dcm";
+      }            
+    }
+    app4.loadURLs(list4);
 
     Leap.loop(function(frame) {
       output.innerHTML =
