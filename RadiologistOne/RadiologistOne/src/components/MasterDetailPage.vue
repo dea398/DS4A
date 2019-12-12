@@ -49,8 +49,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 col-12 ml-3 mb-5">
-        <p class="title">Patient</p>
-        <p>{{ textSampleData.name }}</p>
+        <p></p>
         <p class="title">Order Date</p>
         <p>{{ textSampleData.orderDate }}</p>
         <p class="title">Description</p>

@@ -8,21 +8,25 @@
           @click="$emit('onDisplayTabClick', index)"
         >
           <v-avatar>
-            <img class="mr-3" style="width:30px; height:30px" src="patient.png" />
+            <img
+              class="mr-3"
+              style="width:30px; height:30px"
+              src="patient.png"
+            />
           </v-avatar>
-          {{ tabText.name }}
+          {{ tabText }}
         </button>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <p class="title">Healthcare Provider</p>
-        <p>{{ tabText.shipFrom }}</p>
+        <p>{{ textSampleData.shipFrom }}</p>
         <p class="title">Age</p>
-        <p>{{ tabText.age }}</p>
-        <div id="myDIV" style="display:none;">
+        <p>{{ textSampleData.age }}</p>
+        <div id="myDIV" v-show="textSampleData.probability > 0">
           <p class="title">Classification</p>
-          <p>{{ tabText.status }}</p>
+          <p>{{ textSampleData.status }}</p>
           <p class="title">Probability</p>
-          <p>{{ tabText.probability }}</p>
+          <p>{{ textSampleData.probability }}</p>
         </div>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -34,6 +38,10 @@ export default {
   name: "MasterDetailSideBarTab",
   props: {
     tabText: {
+      type: String,
+      required: true
+    },
+    textSampleData: {
       type: Object,
       required: true,
       validator: function(value) {

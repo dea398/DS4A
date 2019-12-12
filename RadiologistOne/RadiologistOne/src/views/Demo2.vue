@@ -22,7 +22,8 @@
                 v-for="(textAssets, index) in masterDetailText"
                 :key="textAssets.id"
                 :index="index"
-                :tabText="masterDetailText[currentDisplayTabIndex]"
+                :tabText="textAssets.name"
+                :textSampleData="masterDetailText[index]"
                 @onDisplayTabClick="handleDisplayTabClick"
               />
             </transition-group>
@@ -87,13 +88,13 @@ export default {
     loader() {
       const l = this.loader;
       this[l] = !this[l];
-      var x = document.getElementById("myDIV");
+      // var x = document.getElementById("myDIV");
 
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
+      // if (x.style.display === "none") {
+      //   x.style.display = "block";
+      // } else {
+      //   x.style.display = "none";
+      // }
 
       setTimeout(() => (this[l] = false), 4000);
       //this.masterDetailText = this._.shuffle(this.masterDetailText);
