@@ -10,7 +10,7 @@ CONSTANTS = {
         '404_NOT_FOUND': 404,
     },
     'ENDPOINT': {
-        'MASTER_DETAIL': '/api/masterdetail',
+        'MASTER_DETAIL': '/api/masterdetail/<string:prob>',
         'GRID': '/api/grid',
     }
 }

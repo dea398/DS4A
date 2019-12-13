@@ -4,20 +4,21 @@ import os
 from os.path import exists, join
 
 from flask import Flask, jsonify, make_response, send_from_directory
-from constants import CONSTANTS
-from sample_data import patient_data, sample_data
-
 from flask_cors import CORS
 
+from constants import CONSTANTS
+from sample_data import patient_data, patient_data_rank, sample_data
 
 app = Flask(__name__, static_folder='build')
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # MasterDetail Page Endpoint
 @app.route(CONSTANTS['ENDPOINT']['MASTER_DETAIL'])
-def get_master_detail():
-
-    return jsonify(patient_data['text_assets'])
+def get_master_detail(prob):
+    if prob == 'rank':
+        return jsonify(patient_data_rank['text_assets'])
+    else:
+        return jsonify(patient_data['text_assets'])
 
 # Grid Page Endpoint
 @app.route(CONSTANTS['ENDPOINT']['GRID'])

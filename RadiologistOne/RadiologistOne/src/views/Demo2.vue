@@ -6,7 +6,7 @@
           <v-btn
             id="btnRank"
             class="ma-2"
-            @click="loader = 'loading2'"
+            @click="fetchTextAssets2()"
             color="info"
             :loading="loading2"
             :disabled="loading2"
@@ -83,18 +83,12 @@ export default {
 
   created() {
     this.fetchTextAssets();
+    // this.fetchTextAssets2();
   },
   watch: {
     loader() {
       const l = this.loader;
       this[l] = !this[l];
-      // var x = document.getElementById("myDIV");
-
-      // if (x.style.display === "none") {
-      //   x.style.display = "block";
-      // } else {
-      //   x.style.display = "none";
-      // }
 
       setTimeout(() => (this[l] = false), 4000);
       //this.masterDetailText = this._.shuffle(this.masterDetailText);
@@ -117,6 +111,23 @@ export default {
         })
         .then(result => {
           this.masterDetailText = result;
+        })
+        .catch(error => {
+          this.WarningMessageOpen = true;
+          this.WarningMessageText = `${CONSTANTS.ERROR_MESSAGE.MASTERDETAIL_GET} ${error}`;
+        });
+    },
+    fetchTextAssets2() {
+      fetch(CONSTANTS.ENDPOINT.MASTERDETAIL2)
+        .then(response => {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then(result => {
+          this.masterDetailText = result;
+          this.loader = "loading2";
         })
         .catch(error => {
           this.WarningMessageOpen = true;

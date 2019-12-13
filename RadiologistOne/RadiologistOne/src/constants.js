@@ -11,6 +11,8 @@ CONSTANTS.ENDPOINT = {};
 
 CONSTANTS.ENDPOINT.GRID = "/api/grid";
 
-CONSTANTS.ENDPOINT.MASTERDETAIL = "/api/masterdetail";
+CONSTANTS.ENDPOINT.MASTERDETAIL = "/api/masterdetail/radone";
+
+CONSTANTS.ENDPOINT.MASTERDETAIL2 = "/api/masterdetail/rank";
 
 export default CONSTANTS;

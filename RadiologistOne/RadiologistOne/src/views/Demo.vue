@@ -4,18 +4,17 @@
       ref="mycarousel"
       :controls-visible="true"
       :clickable="true"
-      :perspective="0"
-      :inverse-scaling="1500"
-      :space="800"
-      :width="550"
-      :height="500"
+      :perspective="35"
+      :inverse-scaling="1000"
+      :space="600"
+      :width="450"
+      :height="400"
     >
       <slide :index="0">
-        <figure id="dwv0" style="width: 100%;">
+        <figure id="dwv0">
           <div class="layerContainer">
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-          <!--<input type="range" id="sliceRange" value="0" /> -->
           <figcaption>T1 TSE D3</figcaption>
         </figure>
       </slide>
@@ -24,7 +23,6 @@
           <div class="layerContainer">
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-          <!--<input type="range" id="sliceRange" value="0" /> -->
           <figcaption>T1 TSE D4</figcaption>
         </figure>
       </slide>
@@ -33,7 +31,6 @@
           <div class="layerContainer">
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-          <!--<input type="range" id="sliceRange" value="0" /> -->
           <figcaption>T1 TSE D5</figcaption>
         </figure>
       </slide>
@@ -42,7 +39,6 @@
           <div class="layerContainer">
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-          <!--<input type="range" id="sliceRange" value="0" /> -->
           <figcaption>T1 TSE SAG</figcaption>
         </figure>
       </slide>
@@ -51,7 +47,6 @@
           <div class="layerContainer">
             <canvas class="imageLayer" style="width: 100%;"></canvas>
           </div>
-          <!--<input type="range" id="sliceRange" value="0" /> -->
           <figcaption>T2 TSE SAG</figcaption>
         </figure>
       </slide>
@@ -222,25 +217,24 @@ export default {
 <style scoped>
 .mainDiv {
   background-color: black;
-  padding-top: 3%;
-  padding-bottom: 12%;
 }
+
 .carousel-3d-container {
   padding-top: 0%;
 }
+
 .carousel-3d-slide {
-  padding: 0px;
-}
-.carousel-3d-container figure {
-  margin: 0;
+  background-color: black;
 }
 
+.carousel-3d-container figure {
+  widows: 100%;
+  margin: 0;
+}
 .carousel-3d-container figcaption {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
-  bottom: 0;
-  position: absolute;
   bottom: 0;
   padding: 15px;
   font-size: 12px;

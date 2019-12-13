@@ -8,10 +8,10 @@
               ref="mycarousel"
               :controls-visible="true"
               :clickable="true"
-              :perspective="0"
-              :inverse-scaling="1500"
+              :perspective="35"
+              :inverse-scaling="1000"
               :space="700"
-              :width="400"
+              :width="450"
               :height="400"
             >
               <slide :index="0">
@@ -19,7 +19,7 @@
                   <div class="layerContainer">
                     <canvas class="imageLayer" style="width: 100%;"></canvas>
                   </div>
-                  <figcaption>Patient 1</figcaption>
+                  <figcaption>D3</figcaption>
                 </figure>
               </slide>
               <slide :index="1">
@@ -27,7 +27,7 @@
                   <div class="layerContainer">
                     <canvas class="imageLayer" style="width: 100%;"></canvas>
                   </div>
-                  <figcaption>Patient 2</figcaption>
+                  <figcaption>D4</figcaption>
                 </figure>
               </slide>
               <slide :index="2">
@@ -35,7 +35,7 @@
                   <div class="layerContainer">
                     <canvas class="imageLayer" style="width: 100%;"></canvas>
                   </div>
-                  <figcaption>Patient 3</figcaption>
+                  <figcaption>D5</figcaption>
                 </figure>
               </slide>
             </carousel-3d>
@@ -52,8 +52,10 @@
         <p></p>
         <p class="title">Order Date</p>
         <p>{{ textSampleData.orderDate }}</p>
-        <p class="title">Description</p>
+        <p class="title">Patient Description</p>
         <p>{{ textSampleData.shortDescription }}</p>
+        <p class="title" v-show="textSampleData.probability > 0">Annotations</p>
+        <p v-show="textSampleData.probability > 0">{{ textSampleData.longDescription }}</p>
       </div>
     </div>
   </div>
@@ -176,5 +178,20 @@ export default {
   height: 500px;
   padding-top: 3em;
   padding-bottom: 0em;
+}
+
+.carousel-3d-slide {
+  background-color: black;
+}
+
+.carousel-3d-container figcaption {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  bottom: 0;
+  padding: 15px;
+  font-size: 12px;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 </style>
